@@ -1,6 +1,11 @@
 <?php
+include 'Connect.php';
+
+if(!isset($_GET['id'])){
+  header("location:login.php");
+}
+
 if(isset($_GET['id'])){
-    include 'Connect.php';
     $sql = "SELECT * FROM post_info WHERE Post_ID = '".$_GET['id']."'";
     if($result = mysqli_query($db, $sql)){
       if(mysqli_num_rows($result) > 0){  
@@ -14,7 +19,7 @@ include('header.php');
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" href="/docs/4.0/assets/img/favicons/favicon.ico">
-
+    <title>Blog Detail</title>
     <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/blog/">
 
     <!-- Bootstrap core CSS -->

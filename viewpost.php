@@ -73,7 +73,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>DOCPANEL</title>
+    <title>Post Detail</title>
     <!-- BOOTSTRAP STYLES-->
     <link href="assets/css/bootstrap.css" rel="stylesheet" />
     <!-- FONTAWESOME STYLES-->
@@ -131,7 +131,10 @@
               <a class="active-menu" href="yourposts.php"><i class="far fa-edit fa-3x"></i> Your Posts</a>
             </li>
             <li>
-              <a class="" href="#"><i class="fa fa-user-md fa-3x"></i> Profile</a>
+              <a class="" href="profile.php"><i class="fa fa-user-md fa-3x"></i> Profile</a>
+            </li>
+            <li>
+              <a class="" href="changepassdoc.php"><i class="fa fa-key fa-3x"></i> Change Password</a>
             </li>
             <li>
               <a class="" href="logout.php"><i class="fa fa-sign-out fa-3x"></i> Logout</a>
@@ -183,7 +186,8 @@
                   >Post Image<span class="required"> *</span></label
                 >
                 </br>
-                 <img style="border-radius: 8px; border-width:5px;border-style:solid;border-color:#3fbbc0;" 
+                
+                <img style="border-radius: 8px; border-width:5px;border-style:solid;border-color:#3fbbc0;" 
                     class="mx-auto d-block" 
                     src=<?php echo $rows['Post_Img'];?> />
 

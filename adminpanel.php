@@ -1,15 +1,14 @@
 <?php 
   include 'Connect.php';
   session_start();
-  if(!$_SESSION['type'] == 'D'){
-    header("location:logindoc.php");
+
+  if(!$_SESSION['type'] == 'A'){
+    header("location:adminlogin.php");
   }
 ?>
 
 <?php
 	$errors = array();
-  $docid = $_SESSION['doctor_id'];
-  
 
     if(isset($_POST['Submit'])){
       $files = "";
@@ -48,7 +47,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>DOCPANEL</title>
+    <title>Admin Panel</title>
     <!-- BOOTSTRAP STYLES-->
     <link href="assets/css/bootstrap.css" rel="stylesheet" />
     <!-- FONTAWESOME STYLES-->
@@ -97,19 +96,16 @@
       <!-- /. NAV TOP  -->
       <nav class="navbar-default navbar-side" role="navigation">
         <div class="sidebar-collapse">
-          <p style="color:white">Welcome Doctor,  <?php if(isset($_SESSION['name'])){echo $_SESSION['name'];}?></p>
+          <p style="color:white">Welcome Admin</p>
           <ul class="nav" id="main-menu">
             <li>
-              <a class="active-menu" href="docpanel.php"><i class="fas fa-mail-bulk fa-3x"></i> Add Posts</a>
+              <a class="" href="allusers.php"><i class="fa fa-user fa-3x"></i> Manage Users</a>
             </li>
             <li>
-              <a href="yourposts.php"><i class="far fa-edit fa-3x"></i> Your Posts</a>
+              <a href="alldoctors.php"><i class="fa fa-user-md fa-3x"></i> Manage Doctor</a>
             </li>
             <li>
-              <a class="" href="profile.php"><i class="fa fa-user-md fa-3x"></i> Profile</a>
-            </li>
-            <li>
-              <a class="" href="changepassdoc.php"><i class="fa fa-key fa-3x"></i> Change Password</a>
+              <a class="" href="verifydoc.php"><i class="fa fa-check fa-3x"></i> Verify Doctor</a>
             </li>
             <li>
               <a class="" href="logout.php"><i class="fa fa-sign-out fa-3x"></i> Logout</a>
@@ -124,58 +120,7 @@
         <div id="page-inner">
           <div class="row">
             <div class="col-md-12">
-              <h2>Add Posts</h2>
-              <h1 class="lead hidden-xs-down">Write Down an Article!</h1>
-              <hr />
-              <form method="POST" enctype = "multipart/form-data">
-                <div class="form-group">
-                  <label class="col-2"
-                    >Post Title<span class="required"> *</span></label
-                  >
-                  <div class="col-10">
-                    <input
-                      type="text"
-                      class="form-control"
-                      name="posttitle"
-                      required="required"
-                    />
-                  </div>
-                  <hr />
-                </div>
-
-                <label class="col-2"
-                  >Post Text<span class="required"> *</span></label
-                >
-                <div class="col-10">
-                  <textarea
-                    rows="15"
-                    cols="50"
-                    class="form-control"
-                    name="posttext"
-                    placeholder="Enter the Post text here."
-                  ></textarea>
-                </div>
-                <hr />
-
-                <label class="col-4"
-                  >Post Image<span class="required"> *</span></label
-                >
-                <div class="col-2">
-                  <input type="file" name="image" required="required" />
-                </div>
-                <hr />
-
-                <div><?php include('errors.php');?></div>
-
-                <div class="col-10">
-                  <input
-                    type="submit"
-                    name="Submit"
-                    value="Post"
-                    class="bts btscol"
-                  />
-                </div>
-              </form>
+              <h2>Welcome to Admin Panel</h2>
             </div>
           </div>
         </div>

@@ -1,11 +1,16 @@
 
 <?php
+  session_start();
   $bmi = "";
   $bmicontent = "";
   include("header.php");
 ?>
 
 <?php
+
+  if($_SESSION['type']!=="U"){
+    header("location:login.php");
+  }
  
  if(isset($_POST['calculate']))
  {
@@ -47,15 +52,15 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>BMI</title>
+    <title>Calculate Bmi</title>
     <!-- Favicons -->
-    <link href="assets/img/favicon.png" rel="icon" />
+    <link rel="icon" href="assets/img/favicon.png" />
     <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon" />
     <link
       href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"
       rel="stylesheet"
     />
-
+    
     <link href="assets/vendor/icofont/icofont.min.css" rel="stylesheet" />
     <link
       href="assets/vendor/bootstrap/css/bootstrap.min.css"

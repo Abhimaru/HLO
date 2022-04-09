@@ -1,7 +1,10 @@
 <?php
 include('header.php');
-
 include 'Connect.php';
+if(!$_SESSION['type'] == 'U'){
+    header("location:login.php");
+  }
+
 $sql = "SELECT * FROM post_info";
 if($result = mysqli_query($db, $sql)){
   if(mysqli_num_rows($result) > 0){  
@@ -15,7 +18,7 @@ if($result = mysqli_query($db, $sql)){
     <meta name="author" content="">
     <link rel="icon" href="/docs/4.0/assets/img/favicons/favicon.ico">
 
-    <title>Blog Template for Bootstrap</title>
+    <title>Blogs by Doctor</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/blog/">
 
@@ -122,7 +125,6 @@ else{
   include('header.php');
   echo '  
         <br><br><br><h1>Sorry no records found.</h1><hr>';
-        include('footer.php'); 
     }
 } else{
     echo "ERROR: Could not able to execute $sql. " . mysqli_error($db);

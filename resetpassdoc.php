@@ -1,6 +1,10 @@
 <?php 
 session_start();
 include 'Connect.php';
+
+  if(!isset($_GET['token'])){
+  header("location:login.php");
+}
 ?>
 
 <?php

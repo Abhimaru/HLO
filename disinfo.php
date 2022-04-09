@@ -1,4 +1,10 @@
 <?php
+session_start();
+if($_SESSION['type']!=="U"){
+    header("location:login.php");
+}
+
+
 if(isset($_POST['disease'])){
     include 'Connect.php';
     $sql = "SELECT * FROM sym_info WHERE Dis_name = '".$_POST['disease']."'";

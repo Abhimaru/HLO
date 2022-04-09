@@ -1,5 +1,9 @@
 <?php
   include("header.php");
+  session_start();
+  if($_SESSION['type']!=="U"){
+    header("location:login.php");
+  }
 ?>
 
 <!DOCTYPE html>
@@ -7,7 +11,7 @@
   <head>
     <!-- jQuery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-
+    <title>Symptom Checker</title>
     <!-- jQuery UI -->
     <link
       rel="stylesheet"

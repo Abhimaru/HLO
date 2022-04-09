@@ -63,16 +63,7 @@ $errors = array();
                 $iquery = mysqli_query($db , $query);          
                 if($iquery)
                 {
-                  $subject = "Email Activation";
-                  $body = "Hi, $username. Click here to activate your account http://localhost/hlo/activatedoc.php?token=$token";
-                  $headers = "From:connectus1111@gmail.com";
-                  if(mail($email, $subject, $body, $headers)){
-                    $_SESSION['msg'] = "Check mail to activate your account $email";	
-                    header("location: logindoc.php");
-                  }
-                  else{
-                    alert("Failed to send mail");
-                  }
+                  header("location: logindoc.php");
                 }
                 else{
                   array_push($errors, "Failed to Insert");

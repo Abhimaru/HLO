@@ -1,6 +1,10 @@
 <?php
 include('header.php');
 include 'Connect.php';
+
+if(!$_SESSION['type'] == 'U'){
+    header("location:login.php");
+  }
 $sql = "SELECT * FROM Doc_account";
 if($result = mysqli_query($db, $sql)){
   if(mysqli_num_rows($result) > 0){  
@@ -14,7 +18,7 @@ if($result = mysqli_query($db, $sql)){
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" href="/docs/4.0/assets/img/favicons/favicon.ico">
-    <title>Doctors</title>
+    <title>Doctors List</title>
     <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/blog/">
     <link href="../../dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Playfair+Display:700,900" rel="stylesheet">

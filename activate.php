@@ -19,4 +19,7 @@ if(isset($_GET['token'])){
 			header('location: signup.php');
 	}
 }
+else{
+	header("location:login.php");
+}
 ?>

@@ -1,10 +1,8 @@
 <?php
 session_start();
 include 'Connect.php';
-
-$docid = $_SESSION['doctor_id'];
-if($_SESSION['type']!=="D"){
-    header("location:logindoc.php");
+if($_SESSION['type']!=="A"){
+    header("location:adminlogin.php");
   }
 ?>
 <!DOCTYPE html>
@@ -12,7 +10,7 @@ if($_SESSION['type']!=="D"){
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Your Posts</title>
+    <title>Pending Requests</title>
     <!-- BOOTSTRAP STYLES-->
     <link href="assets/css/bootstrap.css" rel="stylesheet" />
     <!-- FONTAWESOME STYLES-->
@@ -61,19 +59,16 @@ if($_SESSION['type']!=="D"){
       <!-- /. NAV TOP  -->
       <nav class="navbar-default navbar-side" role="navigation">
         <div class="sidebar-collapse">
-          <p style="color:white">Welcome Doctor,  <?php if(isset($_SESSION['name'])){echo $_SESSION['name'];}?></p>
+          <p style="color:white">Welcome Admin</p>
           <ul class="nav" id="main-menu">
             <li>
-              <a href="docpanel.php"><i class="fas fa-mail-bulk fa-3x"></i> Add Posts</a>
+              <a href="allusers.php"><i class="fa fa-user fa-3x"></i> Manage Users</a>
             </li>
             <li>
-              <a class="active-menu" href="yourposts.php"><i class="far fa-edit fa-3x"></i> Your Posts</a>
+              <a class="" href="alldoctors.php"><i class="fa fa-user-md fa-3x"></i> Manage Doctor</a>
             </li>
             <li>
-              <a class="" href="profile.php"><i class="fa fa-user-md fa-3x"></i> Profile</a>
-            </li>
-            <li>
-              <a class="" href="changepassdoc.php"><i class="fa fa-key fa-3x"></i> Change Password</a>
+              <a class="active-menu" href="verifydoc.php"><i class="fa fa-check fa-3x"></i> Verify Doctor</a>
             </li>
             <li>
               <a class="" href="logout.php"><i class="fa fa-sign-out fa-3x"></i> Logout</a>
@@ -87,42 +82,42 @@ if($_SESSION['type']!=="D"){
         <div id="page-inner">
             <div class="row">
                 <div class="col-md-12">
-                    <h2>Your Post</h2>   
-                    <h1 class="lead hidden-xs-down">Update or Delete any Posts</h1>
+                    <h2>Verify Doctors</h2>   
+                    <h1 class="lead hidden-xs-down">List of pending verification requests</h1>
                     <hr />
                     <div class="col-md-9 col-lg-10 main"><br>
                         <table style="table-layout: fixed; width: 100%" class="table table-hover">
                         <thead>
                             <tr>
                                 <th  style=" width: 25%"scope="col">ID</th>
-                                <th style=" width: 25%"scope="col">Title</th>
-                                <th style=" width: 50%"scope="col">Text</th>
-                                <th style=" width: 25%"scope="col">Created on</th>
-                                <th style=" width: 25%"scope="col">See Post</th>
+                                <th style=" width: 25%"scope="col">Name</th>
+                                <th style=" width: 50%"scope="col">Email</th>
+                                <th style=" width: 25%"scope="col">Address</th>
+                                <th style=" width: 25%"scope="col">View </th>
                             </tr>
                         </thead>
                         <tbody>
                             <?php 
-                                $sql = "SELECT * FROM post_info where Doc_ID = '$docid'";
+                                $sql = "SELECT * FROM doc_account where D_Valid='inactive'";
                                 $result = mysqli_query($db, $sql);
                                 if($result){
                                 if(mysqli_num_rows($result) > 0){  
                                 while($rows=$result->fetch_assoc())
                                 {
-                            ?>
-                            <tr>
-                                <td style="word-wrap: break-word" ><?php echo $rows['Post_ID'] ?></td>
-                                <td><?php echo $rows['Post_Head']; ?></td><?php $ans = "user"; ?></td>
-                                <td><?php echo $rows['Post_Txt']; ?></td>
-                                <td><?php echo $rows['P_Created']; ?></td>
-                                <td><a href="viewpost.php?id=<?php echo $rows['Post_ID'];?>" class="btscol bts">
-                                    <i class="lni lni-trash"></i>View>></a>
-                                </td>
-                                <!-- <td><a href="deleteans.php?id=<?php #echo $rows['Post_ID'];?>" class="btscol bts">
-                                    <i class="lni lni-trash"></i>Delete
-                                </td> -->
-                            </tr> 
-                            <?php 
+                                ?>
+                                <tr>
+                                    <td style="word-wrap: break-word" ><?php echo $rows['Doc_ID'] ?></td>
+                                    <td><?php echo $rows['Doc_Name']; ?></td>
+                                    <td><?php echo $rows['Doc_Email']; ?></td>
+                                    <td><?php echo $rows['Doc_Address']; ?></td>
+                                    <td><a href="docviewverify.php?id=<?php echo $rows['Doc_ID'];?>" class="btscol bts">
+                                        <i class="lni lni-trash"></i>View>></a>
+                                    </td>
+                                    <!-- <td><a href="deleteans.php?id=<?php #echo $rows['Post_ID'];?>" class="btscol bts">
+                                        <i class="lni lni-trash"></i>Delete
+                                    </td> -->
+                                </tr> 
+                                <?php 
                                 }
   }
 }

@@ -14,7 +14,6 @@
 
   <meta content="" name="description">
   <meta content="" name="keywords">
-
   <!-- Favicons -->
   <link href="assets/img/favicon.png" rel="icon">
   <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
@@ -51,7 +50,7 @@
   <header id="header" class="fixed-top">
     <div class="container d-flex align-items-center">
 
-      <a style="margin:-80px"href="index.php" class=" mr-auto">Welcome User, <?php echo $_SESSION['username'] ?></a>
+      <a style="margin:-80px"href="index.php" class=" mr-auto">Welcome User, <?php echo $_SESSION['username']; ?></a>
 
       <nav class="nav-menu d-none d-lg-block">
         <ul>
@@ -87,7 +86,6 @@
       <nav class="nav-menu d-none d-lg-block">
         <ul>
           <li class="active"><a href="index.php">Home</a></li>
-            <li><a href="postmain.php">Blog</a></li>
             <li><a href="#contact">Contact</a></li>
         </ul>
       </nav>
